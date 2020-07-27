@@ -52,10 +52,29 @@ class KnightPathFinder
         children.each {|child| child.parent = node}
         children
     end
+
+    def find_path(end_pos)
+        final_node = self.root_node.bfs(end_pos)
+        self.trace_path_back(final_node)
+    end
+
+    def trace_path_back(end_pos)
+        current_node = end_pos
+        path_arr = []
+        until current_node.parent == nil
+            path_arr.unshift(current_node.value)
+            current_node = current_node.parent
+        end
+        path_arr.unshift(current_node.value)
+        path_arr
+    end
+
 end
 
 # knight = KnightPathFinder.new([0,0])
 # knight.build_move_tree
 
-knight2 = KnightPathFinder.new([5,6])
+knight2 = KnightPathFinder.new([0,0])
 p knight2.root_node
+p knight2.find_path([7,6])
+p knight2.find_path([6,2])
