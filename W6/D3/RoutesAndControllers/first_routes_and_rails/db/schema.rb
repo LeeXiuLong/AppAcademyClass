@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_211653) do
+ActiveRecord::Schema.define(version: 2020_08_13_202606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,26 @@ ActiveRecord::Schema.define(version: 2020_08_12_211653) do
     t.string "image_url", null: false
     t.integer "artist_id", null: false
     t.index ["title", "artist_id"], name: "index_artworks_on_title_and_artist_id", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "body", null: false
+    t.integer "commenter_id", null: false
+    t.integer "artwork_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_comments_on_artwork_id"
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "likeable_type"
+    t.bigint "likeable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
+    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
   end
 
   create_table "users", force: :cascade do |t|

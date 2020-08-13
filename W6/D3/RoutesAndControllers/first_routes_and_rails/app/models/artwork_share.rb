@@ -11,4 +11,6 @@ message: "You can only share an artwork to a viewer once"}
     primary_key: :id,
     foreign_key: :artwork_id,
     class_name: :Artwork
+
+    
 end
