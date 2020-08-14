@@ -15,23 +15,24 @@ class LikesController < ApplicationController
     end
 
     def create
-        # if params[:artwork_id]
-        #     like = Like.new(params.require(:like).permit(:user_id, :artwork_id, 'Artwork'))
-        #     if like.save
-        #         render json: like
-        #     else
-        #         render json: like.errors.full_messages, status: 422
-        #     end
-        # elsif params[:comment_id]
-        #     like = Like.new(params.require(:like).permit(:user_id, :comment_id, 'Comment'))
-        #     if like.save
-        #         render json: like
-        #     else
-        #         render json: like.errors.full_messages, status: 422
-        #     end
-        # else
-        #     render json: Like.all
-    # end
+        if params[:artwork_id]
+            like = Like.new(params.require(:like).permit(:user_id, :artwork_id, 'Artwork'))
+            like = Like.new({user_id: , })
+            if like.save
+                render json: like
+            else
+                render json: like.errors.full_messages, status: 422
+            end
+        elsif params[:comment_id]
+            like = Like.new(params.require(:like).permit(:user_id, :comment_id, 'Comment'))
+            if like.save
+                render json: like
+            else
+                render json: like.errors.full_messages, status: 422
+            end
+        else
+            render json: Like.all
+    end
         like = Like.new(like_params)
         if like.save
             render json: like

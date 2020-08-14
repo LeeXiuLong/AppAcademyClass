@@ -1,0 +1,17 @@
+<h1> Cats </h1>
+
+<ul>
+    <% @cats.each do |cat| %>
+        <li> 
+            <%=cat.name%> 
+            <a href= <%= edit_cat_url(cat.id)%>> edit </a>
+            <form action = <%=cat_url(cat.id)%> method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value = "delete">
+            </form>
+        </li>
+    <% end %>
+</ul>
+<form action = <%=new_cat_url%>>
+    <button type="submit"> Create a Cat! </button>
+</form>

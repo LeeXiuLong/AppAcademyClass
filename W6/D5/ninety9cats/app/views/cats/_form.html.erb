@@ -1,0 +1,50 @@
+<% action_url = action == :edit ? cat_url(cat.id) : cats_url %>
+
+
+<form action= <%=action_url%> method = "post">
+    <% if action == :edit%>
+        <input type="hidden" name="_method" value="PATCH">
+    <% end %>
+
+    <label for="name"> Name </labeL>
+    <input id="name" type="text" name="cat[name]" value =<%=cat.name%> >
+
+    <br>
+
+    <label for="birthdate"> Birthdate </label>
+    <input id="birthdate" type="date" name="cat[birthdate]" value=<%=cat.birthdate%>>
+
+    <br>
+
+    <label for="color"> Color:  </label>
+    <select id="color" name="cat[color]">
+        <option disabled <%= cat.color ? "" : "selected" %> > --PICK A COLOR-- </option>
+        <%Cat::COLORS.each do |color|%>
+            <option value=<%=color%> <%= cat.color == color ? "selected" : ""%> >
+                <%=color%>
+            </option>
+        <%end%>
+    </select>
+
+    <br>
+
+    <label for="sex"> Sex </label>
+    <select id="sex" name="cat[sex]">
+        <option disabled <%= cat.sex ? "" : "selected" %>> --PICK A SEX-- </option>
+        <option value="M" <%= cat.sex == "M" ? "selected" : ""%>> M </option>
+        <option value="F" <%= cat.sex == "F" ? "selected" : ""%>> F </option>
+    </select>
+
+    <br><br>
+
+    <label for="description"> Description </label>
+
+    <br>
+
+    <textarea name="cat[description]" rows="5" cols="30" ><%= cat.description %></textarea>
+
+    <br>
+    
+    <input type="submit" value=<%= cat.id ? "Edit this cat!" : "Create a cat!"%>>
+
+</form>
