@@ -1,0 +1,28 @@
+    <% if is_edit %>
+        <form action="<%= artist_url %>" method="POST">
+        <input type="hidden", name="_method" value="PATCH" >
+    <%else%>
+        <form action="<%= artists_url%>" method="POST">
+    <%end%>
+    
+    <input type="hidden" name="authenticity_token" value= "<%= form_authenticity_token %>">
+
+    <label for="Artist">
+        <%if is_edit%>
+            Edit Artist
+        <%else%>
+            New Artist
+        <%end%>
+    </label>
+    
+    <input id="Artist" type="text" name="artist[name]" value="<%= artist.name %>">
+    
+    <input type="submit" value=
+    "<%if is_edit%> 
+        Update this Artist!
+    <%else%>
+        Make a new Artist!
+    <%end%>
+    ">
+</form>
+

@@ -1,0 +1,18 @@
+<h1>Artists</h1>
+
+<ul>
+    <%@artists.each do |artist|%>
+        <li>Artist: <%= artist.name%></li>
+        <%if logged_in?%>
+            <form action="<%=artist_url(artist.id)%>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="authenticity_token" value= "<%= form_authenticity_token %>">
+                <input type="submit" value="Delete This Artist">
+            </form>
+            <a href="<%=edit_artist_url(artist.id)%>">Edit This Artist</a>
+            <br>
+            <br>
+        <%end%>
+    <%end%>
+</ul>
+

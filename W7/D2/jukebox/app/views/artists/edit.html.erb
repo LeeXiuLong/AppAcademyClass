@@ -1,0 +1,9 @@
+<%if logged_in?%>
+
+    <h1>Want to change an artist?</h1>
+    <h2>Change it here!</h2>
+
+    <%= render "form", is_edit: true, artist: @artist%>
+<%else%>
+    <h1>Please login to Edit an Artist</h1>
+<%end%>

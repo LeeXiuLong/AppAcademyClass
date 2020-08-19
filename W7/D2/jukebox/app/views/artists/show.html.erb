@@ -1,0 +1,10 @@
+<%if logged_in?%>
+    <h1><%=@artist.name%></h1>
+    <form action="<%=artist_url%>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="authenticity_token" value= "<%= form_authenticity_token %>">
+        <input type="submit" value="Delete">
+    </form>
+<%else%>
+    <h1>Please login to view artists in your jukebox!!</h1>
+<%end%>
