@@ -1,0 +1,12 @@
+/* PHASE 4: Footer */
+
+.footer{
+    display: flex;
+    background: red;
+    justify-content: space-between;
+    margin: 0px;
+    font-size: 14px;
+    border: 1px;
+}
+
+

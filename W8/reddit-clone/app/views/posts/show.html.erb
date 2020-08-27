@@ -1,0 +1,18 @@
+<h1><%=@post.title%></h1>
+
+<br>
+<br>
+<br>
+
+<%if @post.url%>
+    <a href="<%=@post.url%>">Link</a>
+<%end%>
+
+<br>
+<br>
+<br>
+
+
+<%if @post.content%>
+    <p><%=@post.content%></p>
+<%end%>

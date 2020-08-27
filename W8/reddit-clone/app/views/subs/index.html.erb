@@ -1,0 +1,9 @@
+List of All Subs!
+
+<ul>
+    <%@subs.each do |sub|%>
+        <li>
+            <a href="<%=sub_url(sub.id)%>"><%=sub.title%></a>
+        </li>
+    <%end%>
+</ul>
