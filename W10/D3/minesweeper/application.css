@@ -1,0 +1,24 @@
+.row{
+    display: flex;
+}
+
+#tile{
+    width: 40px;
+    margin: 2px;
+    height:40px;
+    text-align: center;
+    padding-bottom: 10px;
+    background-color: lightgrey; 
+}
+
+.tileNotClicked{
+ border-style: outset;
+}
+
+.tileClicked{
+    border-style: inset;
+}
+
+.game-board {
+    margin: auto;
+}
